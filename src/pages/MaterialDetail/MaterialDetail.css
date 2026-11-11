@@ -1,0 +1,82 @@
+/* 素材详情 */
+
+/* Header card (.card.page-head) */
+.md-head-main { display: grid; gap: var(--space-3); min-width: 0; max-width: 640px; }
+.md-status-line { display: flex; align-items: center; gap: var(--space-3); min-height: 28px; }
+.md-head h1 { overflow-wrap: anywhere; }
+.md-head .md-lead { margin-top: 0; }
+.md-head-side { display: grid; justify-items: end; gap: var(--space-3); flex: none; }
+.md-head-actions, .md-asset-actions, .md-head-minor, .md-status { display: flex; align-items: center; }
+.md-head-actions { gap: var(--space-4); }
+.md-asset-actions, .md-head-minor, .md-status { gap: var(--space-2); }
+.md-status .button[aria-pressed='true'] { cursor: default; transform: none; }
+.md-status .md-st-picked[aria-pressed='true'] { background: var(--ok-soft); color: var(--ok-text); border-color: var(--ok); }
+.md-status .md-st-dropped[aria-pressed='true'] { background: var(--canvas); color: var(--text-2); border-color: var(--border-strong); }
+.md-status .md-st-pending[aria-pressed='true'] { background: var(--warn-soft); color: var(--warn-text); border-color: var(--warn); }
+
+/* Body grid */
+.md-body { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: var(--space-6); align-items: start; }
+.md-col { display: grid; gap: var(--space-6); min-width: 0; }
+.md-card-head { align-items: center; margin-bottom: var(--space-4); }
+
+/* Preview frame */
+.md-preview { display: grid; gap: var(--space-4); padding: var(--space-4); }
+.md-frame { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--radius-control); background: var(--text); }
+.md-frame .md-media { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 0; }
+.md-frame .md-cover:not(.thumb-ph) { background: transparent; }
+/* Non-16:9 covers stay whole and letterboxed, the way the video itself plays */
+.md-frame .md-cover img { object-fit: contain; }
+.md-frame video.md-media { display: block; background: var(--text); }
+.md-chip {
+  position: absolute; max-width: calc(100% - 24px); padding: var(--space-1) var(--space-3); border-radius: var(--radius-pill);
+  background: var(--scrim); color: #fff; font-size: var(--fs-caption); font-weight: 600; line-height: 1.4;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; pointer-events: none;
+}
+.md-chip-tl { top: var(--space-3); left: var(--space-3); }
+.md-chip-br { right: var(--space-3); bottom: var(--space-3); }
+
+/* Player bar */
+.md-player { display: flex; align-items: center; gap: var(--space-4); }
+.md-play { display: flex; align-items: center; gap: var(--space-2); flex: none; }
+.md-play .cap { white-space: nowrap; }
+.md-timeline { display: flex; flex: 1; align-items: center; gap: var(--space-3); min-width: 0; font-size: var(--fs-caption); color: var(--text-2); }
+.md-track { flex: 1; height: 4px; border-radius: var(--radius-pill); background: var(--border); }
+.md-specs { display: flex; gap: var(--space-2); flex: none; }
+
+/* Prompt and params */
+.md-prompt-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--space-6); align-items: start; }
+.md-prompt-col { display: grid; gap: var(--space-4); }
+.md-sub { margin-bottom: var(--space-2); font-size: var(--fs-caption); font-weight: 600; line-height: 1.5; color: var(--text-2); }
+.md-box {
+  padding: var(--space-4); border: 1px solid var(--border); border-radius: var(--radius-control);
+  background: var(--panel-sub); line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.md-none { color: var(--text-2); }
+.md-params > div {
+  display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4);
+  padding: var(--space-2) 0; border-bottom: 1px solid var(--border);
+}
+.md-params > div:last-child { border-bottom: 0; }
+.md-params dt { flex: none; font-size: var(--fs-caption); color: var(--text-2); }
+.md-params dd { min-width: 0; font-weight: 500; text-align: right; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+
+/* Related videos: the list scrolls inside the card; the inset keeps row hover and focus rings unclipped */
+.md-rel-list {
+  display: grid; gap: var(--space-1); max-height: 288px; overflow-y: auto;
+  margin: calc(var(--space-1) * -1) calc(var(--space-3) * -1); padding: var(--space-1) var(--space-3);
+}
+.md-rel-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--space-3);
+  padding: var(--space-3); border-radius: var(--radius-control); transition: background-color var(--dur-fast) var(--ease);
+}
+.md-rel-row:hover { background: var(--canvas); }
+.md-rel-title { display: block; overflow: hidden; font-weight: 500; line-height: 1.4; text-overflow: ellipsis; white-space: nowrap; }
+.md-rel-row .cap { display: block; margin-top: var(--space-1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.md-card-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
+  margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--border);
+}
+
+/* Hint card */
+.md-hint h2 { font-size: var(--fs-body); font-weight: 600; line-height: 1.4; }
+.md-hint p { margin: var(--space-2) 0 var(--space-4); color: var(--text-2); max-width: 60ch; }

@@ -1,0 +1,86 @@
+/* 总览 (dashboard); values follow 总览.html */
+.ov-bento { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--space-6); align-items: stretch; }
+.ov-c-3 { grid-column: span 3; }
+.ov-c-4 { grid-column: span 4; }
+.ov-c-5 { grid-column: span 5; }
+.ov-c-8 { grid-column: span 8; }
+.ov-c-12 { grid-column: span 12; }
+.ov-card { display: flex; flex-direction: column; gap: var(--space-4); }
+.ov-grow { flex: 1; min-height: 0; }
+
+/* List rows: duration tile + title/meta (+ badge) */
+.ov-rows { display: grid; gap: var(--space-1); }
+.ov-row {
+  display: grid; grid-template-columns: 40px minmax(0, 1fr); align-items: center; gap: var(--space-3);
+  padding: var(--space-3); border-radius: var(--radius-control);
+  transition: background-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.ov-row-end { grid-template-columns: 40px minmax(0, 1fr) auto; }
+.ov-row:hover { background: var(--panel-sub); }
+.ov-row:active { transform: scale(0.99); }
+/* Content lines up with the card edge; the hover area bleeds into the card padding */
+.ov-row-flush { margin: calc(var(--space-3) * -1); }
+.ov-row-title, .ov-row-meta { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ov-row-title { font-size: var(--fs-body); font-weight: 600; line-height: 1.4; }
+.ov-row-meta { font-size: var(--fs-caption); line-height: 1.5; color: var(--text-2); }
+
+.ov-prog-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--space-2); }
+.ov-prog-head b { font-size: var(--fs-caption); font-weight: 600; }
+
+/* 本周进度 */
+.ov-week { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: var(--space-8); }
+.ov-stats { display: grid; gap: var(--space-3); align-content: start; }
+.ov-stat {
+  display: grid; gap: 2px; padding: var(--space-3) var(--space-4); border-radius: var(--radius-control);
+  background: var(--panel-sub); border: 1px solid var(--border);
+}
+.ov-stat b { font-size: var(--fs-num); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.ov-stat small { margin-left: var(--space-1); font-size: var(--fs-caption); font-weight: 500; color: var(--text-2); }
+.ov-bars { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: var(--space-3); }
+.ov-bars li { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); }
+.ov-bar-track {
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: var(--space-1);
+  width: 100%; height: 132px; border-bottom: 1px solid var(--border-hover);
+}
+.ov-bar-val { font-size: var(--fs-caption); font-weight: 600; font-variant-numeric: tabular-nums; animation: enter var(--dur) var(--ease) 80ms backwards; }
+.ov-bar {
+  display: block; width: 40px; min-height: 2px; border-radius: 6px 6px 0 0; background: var(--brand-tint);
+  transform-origin: bottom center; animation: grow var(--dur-fill) var(--ease) 80ms backwards;
+  transition: background-color var(--dur-fast) var(--ease);
+}
+.ov-bars li:hover .ov-bar { background: var(--accent); }
+.ov-bar.ov-today { background: var(--brand); }
+.ov-bars li:hover .ov-bar.ov-today { background: var(--brand-2); }
+.ov-bar-day { font-size: var(--fs-caption); color: var(--text-2); }
+.ov-bar-day.ov-today { color: var(--text); font-weight: 700; }
+
+/* 待筛选素材 */
+.ov-big { display: flex; align-items: baseline; gap: var(--space-2); }
+.ov-big b { font-size: var(--fs-display); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+
+/* 制作中成片 */
+.ov-steps { display: grid; gap: var(--space-1); }
+.ov-steps li {
+  display: flex; justify-content: space-between; align-items: center; padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-control); font-size: var(--fs-caption); color: var(--text-2);
+}
+.ov-steps li[aria-current='step'] { background: var(--brand-soft); color: var(--brand-2); font-weight: 600; }
+.ov-steps li span:first-child { color: var(--text); }
+.ov-foot { display: grid; gap: var(--space-2); }
+
+/* 快捷入口 */
+.ov-quick { display: grid; gap: var(--space-2); }
+.ov-quick-link {
+  display: grid; gap: 2px; padding: var(--space-3) var(--space-4); border: 1px solid var(--border);
+  border-radius: var(--radius-control); background: var(--panel);
+  transition: background-color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.ov-quick-link:hover { background: var(--panel-sub); border-color: var(--border-strong); }
+.ov-quick-link:active { transform: scale(0.99); }
+.ov-quick-link b { font-size: var(--fs-body); font-weight: 600; line-height: 1.4; }
+
+.ov-note { display: flex; align-items: center; gap: var(--space-3); padding: 0 var(--space-1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ov-row:active, .ov-quick-link:active { transform: none; }
+}

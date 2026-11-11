@@ -1,0 +1,52 @@
+/* 资产库 (/assets) */
+.page-head.al-head { align-items: flex-start; }
+.al-head .al-lede { max-width: 64ch; line-height: 1.65; }
+.al-head .al-stats { gap: var(--space-2); padding-top: var(--space-2); }
+.badge.al-stat {
+  height: auto; gap: var(--space-2); padding: var(--space-2) var(--space-4);
+  font-size: var(--fs-body); line-height: 1.4; color: var(--text); box-shadow: var(--shadow-card);
+}
+.al-stat strong { font-weight: 700; color: var(--brand); }
+
+.al-library { display: grid; gap: var(--space-4); }
+.al-toolbar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+
+/* Asset card; --c is the type color, set inline on the card */
+.card.al-card { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-4); }
+.al-thumb { flex: none; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--radius-control); }
+.al-ph {
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--c) 14%, var(--panel)), color-mix(in srgb, var(--c) 38%, var(--panel)));
+}
+.al-ph span {
+  font-size: var(--fs-display); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em;
+  color: color-mix(in srgb, var(--c) 70%, var(--text)); opacity: 0.55;
+}
+.al-card h3 { font-size: var(--fs-body); font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.al-meta { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.al-dot { flex: none; width: 8px; height: 8px; border-radius: var(--radius-pill); background: var(--c); }
+.al-refs { font-size: var(--fs-caption); color: var(--text-2); white-space: nowrap; }
+.al-refs strong { font-size: var(--fs-body); font-weight: 700; color: var(--text); }
+.al-src { overflow-wrap: anywhere; }
+.progress.al-bar { height: 4px; margin-bottom: var(--space-1); background: var(--canvas); }
+.al-bar .progress-fill { background: var(--c); }
+/* Pushes the button to the card bottom so buttons line up across a row */
+.al-card .al-view { margin-top: auto; }
+
+.empty.al-empty { padding: var(--space-8) var(--space-6); background: var(--panel); }
+.empty.al-empty .cap { max-width: 48ch; }
+
+/* Hint panel; step numbers come from a CSS counter */
+.card.al-hint {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-6);
+  border-radius: var(--radius-panel);
+}
+.al-hint-body { display: grid; gap: var(--space-3); max-width: 72ch; }
+.al-hint h2 { font-size: var(--fs-body); font-weight: 600; line-height: 1.4; }
+.al-steps { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); counter-reset: al-step; }
+.al-steps li { display: flex; align-items: center; gap: var(--space-2); color: var(--text-2); counter-increment: al-step; }
+.al-steps li::before {
+  content: counter(al-step); display: grid; place-items: center; flex: none; width: 20px; height: 20px;
+  border-radius: var(--radius-pill); background: color-mix(in srgb, var(--brand) 12%, var(--panel));
+  color: var(--brand); font-size: var(--fs-caption); font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums;
+}

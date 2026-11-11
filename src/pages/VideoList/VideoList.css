@@ -1,0 +1,76 @@
+/* 投产视频 (/videos) */
+.vl-head .vl-lead { max-width: 640px; }
+.badge.vl-fact { height: 28px; padding: 0 var(--space-3); }
+
+/* KPI bento: the plays card spans columns 1–2 and rows 1–2 */
+.vl-bento { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); }
+.vl-stat { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
+.vl-stat-big { grid-column: 1 / 3; grid-row: 1 / 3; gap: var(--space-3); }
+.vl-stat-label { font-size: var(--fs-caption); font-weight: 500; line-height: 1.5; color: var(--text-2); }
+.vl-stat-num { font-size: var(--fs-num); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.vl-stat-num small { margin-left: var(--space-1); font-size: var(--fs-body); font-weight: 400; letter-spacing: 0; color: var(--text-2); }
+.vl-stat-big .vl-stat-num { font-size: var(--fs-display); }
+
+/* Channel bars */
+.vl-chan { display: grid; gap: var(--space-3); margin-top: var(--space-2); }
+.vl-chan li { display: grid; grid-template-columns: 64px minmax(0, 1fr) 136px; align-items: center; gap: var(--space-3); font-size: var(--fs-caption); }
+.vl-chan-val { text-align: right; color: var(--text-2); }
+.progress.vl-track { display: block; height: 6px; background: var(--canvas); }
+
+.vl-top {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+  margin-top: auto; padding-top: var(--space-4); border-top: 1px solid var(--border);
+}
+.vl-top-text { display: grid; min-width: 0; font-size: var(--fs-caption); color: var(--text-2); }
+.vl-top-text strong { font-size: var(--fs-body); font-weight: 600; color: var(--text); }
+
+/* List card: head, toolbar (chips + separator + time dropdown) */
+.card.vl-list { padding: 0; }
+.card-head.vl-list-head { align-items: baseline; padding: var(--space-6) var(--space-6) var(--space-4); }
+.vl-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-6); padding: 0 var(--space-6) var(--space-4); }
+.vl-flabel { margin-right: var(--space-1); font-size: var(--fs-caption); color: var(--text-2); }
+.vl-sep { flex: none; width: 1px; height: 20px; background: var(--border); }
+.vl-time { margin-left: auto; }
+
+/* Table */
+.vl-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.vl-c-channel { width: 132px; }
+.vl-c-status { width: 128px; }
+.vl-c-views { width: 112px; }
+.vl-c-likes { width: 104px; }
+.vl-c-rate { width: 164px; }
+.vl-c-go { width: 72px; }
+.vl-table th {
+  padding: var(--space-3) var(--space-4); background: var(--panel-sub); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  font-size: var(--fs-caption); font-weight: 600; line-height: 1.5; color: var(--text-2); text-align: left; white-space: nowrap;
+}
+.vl-table td {
+  padding: var(--space-4); border-bottom: 1px solid var(--border); vertical-align: middle; background: var(--panel);
+  transition: background-color var(--dur-fast) var(--ease);
+}
+.vl-table th:first-child, .vl-table td:first-child { padding-left: var(--space-6); }
+.vl-table th:last-child, .vl-table td:last-child { padding-right: var(--space-6); text-align: right; }
+.vl-table .vl-r { text-align: right; }
+.vl-table tbody tr { cursor: pointer; }
+.vl-table tbody tr:hover td, .vl-table tbody tr:focus-within td { background: var(--panel-sub); }
+.vl-name { display: block; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.vl-meta { display: block; margin-top: 2px; font-size: var(--fs-caption); color: var(--text-2); }
+.vl-none { color: var(--text-2); }
+
+/* 完播率: value + 64px bar */
+.vl-rate { display: flex; align-items: center; gap: var(--space-3); }
+.vl-rate .num { flex: none; width: 48px; }
+.vl-rate .vl-track { flex: none; width: 64px; }
+
+/* Round arrow link */
+.vl-go {
+  display: inline-grid; place-items: center; width: 32px; height: 32px; vertical-align: middle;
+  border: 1px solid var(--border-strong); border-radius: var(--radius-pill); background: var(--panel); color: var(--text);
+  transition: background-color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.vl-go:hover { background: var(--brand); border-color: var(--brand); color: var(--panel); transform: translateX(2px); }
+.vl-go:active { transform: translateX(1px) scale(0.96); }
+
+.pager-bar.vl-pager { padding: var(--space-4) var(--space-6); font-size: var(--fs-caption); color: var(--text-2); }
+.empty.vl-empty { margin: 0 var(--space-6) var(--space-6); padding: 48px var(--space-6); }

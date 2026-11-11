@@ -1,0 +1,58 @@
+/* 新建成片 / 编辑成片 */
+.vf-head { display: grid; gap: var(--space-4); }
+
+/* 12-column card grid, as in 记录素材 */
+.vf-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--space-6); }
+.vf-c5 { grid-column: span 5; }
+.vf-c7 { grid-column: span 7; }
+.vf-c12 { grid-column: span 12; }
+.vf-card { display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; }
+
+/* 画幅: two equal radio chips, as tall as the inputs beside them */
+.check-chips.vf-orient { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.vf-orient .check-chip { min-height: 42px; }
+
+/* 制作进度: radio list in the style of the 总览 steps list */
+.vf-stages { display: grid; gap: var(--space-1); }
+.vf-stage {
+  display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-control); color: var(--text-2); cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.vf-stage:hover { background: var(--panel-sub); }
+.vf-stage input { margin: 0; accent-color: var(--brand); }
+.vf-stage-label { flex: 1; min-width: 0; font-size: 14px; color: var(--text); }
+.vf-stage-cap { font-size: var(--fs-caption); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.vf-stage:has(input:checked) { background: var(--brand-soft); color: var(--brand-2); font-weight: 600; }
+
+/* 目标平台 */
+.vf-platforms { display: grid; gap: var(--space-2); }
+.vf-link { color: var(--brand); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.vf-link:hover { color: var(--brand-2); }
+
+/* 使用的素材 */
+.vf-mat-bar { display: flex; align-items: center; gap: var(--space-3); }
+.vf-search { position: relative; display: flex; align-items: center; width: 320px; }
+.vf-search > svg { position: absolute; left: var(--space-3); color: var(--text-2); pointer-events: none; }
+.vf-search .control { padding-left: 40px; }
+.vf-mat-count { margin-left: auto; }
+.vf-mat-list {
+  display: grid; align-content: start; gap: var(--space-1); max-height: 360px; overflow-y: auto;
+  padding: var(--space-1); border: 1px solid var(--border); border-radius: var(--radius-control);
+}
+.vf-mat {
+  display: grid; grid-template-columns: auto 64px minmax(0, 1fr) auto; align-items: center; gap: var(--space-3);
+  padding: var(--space-2) var(--space-3); border-radius: var(--radius-control); cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease);
+}
+.vf-mat:hover { background: var(--panel-sub); }
+.vf-mat:has(input:checked) { background: var(--brand-soft); }
+.vf-mat input { margin: 0; accent-color: var(--brand); }
+.vf-mat-thumb { width: 64px; height: 36px; }
+.vf-mat-text { display: grid; min-width: 0; }
+.vf-mat-title { font-size: 14px; font-weight: 600; line-height: 1.5; }
+.vf-mat-title, .vf-mat-text .cap { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Radio and checkbox rows show the focus ring on the whole row instead of the small input */
+.vf-stage:has(input:focus-visible), .vf-mat:has(input:focus-visible) { box-shadow: var(--shadow-focus); }
+.vf-stage input:focus-visible, .vf-mat input:focus-visible { box-shadow: none; }

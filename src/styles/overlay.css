@@ -1,0 +1,48 @@
+/* Dropdown (components/Dropdown.jsx) */
+.dd { position: relative; }
+.dd-field { width: 100%; }
+.dd-trigger { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); text-align: left; cursor: pointer; }
+.dd-value { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dd-prefix { margin-right: var(--space-2); color: var(--text-2); font-weight: 500; }
+.dd-placeholder { color: var(--text-3); }
+.dd-caret { flex: none; color: var(--text-2); transition: transform var(--dur-fast) var(--ease); }
+.dd-trigger[aria-expanded='true'] .dd-caret { transform: rotate(180deg); }
+.dd-inline .dd-trigger { min-height: 36px; height: 36px; width: auto; padding: 0 10px 0 var(--space-3); font-size: 14px; font-weight: 600; }
+.dd-menu {
+  position: absolute; z-index: 40; top: calc(100% + 6px); left: 0; min-width: 100%; max-height: 288px; overflow-y: auto;
+  padding: var(--space-1); background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-control);
+  box-shadow: var(--shadow-overlay); animation: pop var(--dur-fast) var(--ease);
+}
+.dd-inline .dd-menu { min-width: 168px; left: auto; right: 0; }
+.dd-opt {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); width: 100%; height: 36px;
+  padding: 0 10px; border: 0; border-radius: 6px; background: transparent; font-size: 14px; text-align: left;
+  white-space: nowrap; cursor: pointer;
+}
+.dd-opt:hover { background: var(--panel-sub); }
+.dd-opt[aria-selected='true'] { color: var(--brand); font-weight: 600; }
+
+/* Toast (components/Toast.jsx) */
+.toast-region { position: fixed; left: 50%; bottom: 32px; z-index: 100; transform: translateX(-50%); pointer-events: none; }
+.toast {
+  max-width: 80vw; padding: 10px var(--space-4); border-radius: var(--radius-control); background: rgba(17, 24, 39, 0.92);
+  color: #fff; font-size: 14px; line-height: 1.4; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18); animation: pop var(--dur) var(--ease);
+}
+
+/* Modal (components/Modal.jsx) */
+.modal {
+  max-width: calc(100vw - 48px); padding: 0; border: 0; border-radius: var(--radius-panel); overflow: visible;
+  background: var(--panel); color: var(--text); box-shadow: var(--shadow-overlay);
+}
+.modal[open] { animation: pop var(--dur) var(--ease); }
+.modal::backdrop { background: rgba(15, 23, 42, 0.45); }
+.modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); padding: 20px var(--space-6) 0; }
+.modal-head h2 { font-size: var(--fs-title); font-weight: 700; line-height: 1.4; }
+.modal-head .cap { margin-top: 2px; }
+.modal-head .icon-btn { margin: -6px -10px 0 0; }
+.modal-body { display: grid; gap: var(--space-4); padding: 20px var(--space-6); }
+.modal-foot {
+  display: flex; align-items: center; justify-content: flex-end; gap: var(--space-3); padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--border); border-radius: 0 0 var(--radius-panel) var(--radius-panel); background: var(--panel-sub);
+}
+.modal-foot .push { margin-right: auto; }

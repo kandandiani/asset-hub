@@ -1,0 +1,47 @@
+/* 账号管理: bento grid with profile (top left), security (bottom left) and platforms (right, both rows) */
+.ac-bento {
+  display: grid; grid-template-columns: 5fr 7fr; grid-template-areas: 'profile platforms' 'security platforms';
+  gap: var(--space-6); align-items: stretch;
+}
+.ac-profile { grid-area: profile; }
+.ac-platforms { grid-area: platforms; }
+.ac-security { grid-area: security; }
+
+/* Card column: head, body, foot pinned to the bottom */
+.ac-card { display: flex; flex-direction: column; min-width: 0; }
+.ac-card > .card-head { margin-bottom: var(--space-4); }
+.ac-card > .card-head h2 { font-size: var(--fs-title); line-height: 1.3; letter-spacing: -0.01em; }
+.ac-card > .card-head .cap { margin-top: var(--space-1); }
+.ac-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+  margin-top: auto; padding-top: var(--space-4); border-top: 1px solid var(--border);
+}
+
+/* Profile */
+.ac-identity { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4); }
+.ac-avatar {
+  display: grid; place-items: center; flex: none; width: 72px; height: 72px; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--brand-soft); color: var(--brand);
+  font-size: 28px; font-weight: 700; line-height: 1;
+}
+.ac-who { min-width: 0; }
+.ac-name { font-size: var(--fs-title); font-weight: 600; line-height: 1.3; overflow-wrap: anywhere; }
+.ac-mail { margin-bottom: var(--space-2); color: var(--text-2); overflow-wrap: anywhere; }
+.ac-facts {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4);
+  padding-top: var(--space-4); border-top: 1px solid var(--border);
+}
+.ac-facts dt { font-size: var(--fs-caption); color: var(--text-2); }
+.ac-facts dd { font-weight: 500; font-variant-numeric: tabular-nums; }
+.ac-edit { display: grid; gap: var(--space-4); }
+.ac-edit-actions { display: flex; justify-content: flex-end; gap: var(--space-2); }
+
+/* List rows: platforms (tile, text, badge, button) and security (text, side control) */
+.ac-row { display: grid; align-items: center; gap: var(--space-4); border-top: 1px solid var(--border); }
+.ac-row-main { display: flex; flex-direction: column; min-width: 0; }
+.ac-row-title { font-weight: 600; line-height: 1.4; }
+.ac-plats { display: grid; grid-auto-rows: 1fr; flex: 1; }
+.ac-plat { grid-template-columns: 40px minmax(0, 1fr) 96px 72px; padding: var(--space-3) 0; }
+.ac-plat .badge { justify-self: start; }
+.ac-plat .cap { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ac-sec { grid-template-columns: minmax(0, 1fr) auto; padding: var(--space-4) 0; }
